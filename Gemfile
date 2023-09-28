@@ -63,6 +63,7 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
 gem "vite_rails"
 gem "vite_ruby"
 gem "ruby-vips", "~> 2.1", ">= 2.1.4"
