@@ -4,7 +4,7 @@ RSpec.describe UserService do
   let(:user) { create(:user, residence: 'Berlin', hobbies: [create(:hobby, interest: 'Lifting'), create(:hobby, interest: 'Diving')]) }
   let(:service) { UserService.new(user) }
 
-  describe '#find_friends' do
+  describe 'find_friends action' do
     context 'when users with the same interests exist in the same place of residence' do
       before do
         create(:user, residence: 'Berlin', hobbies: [create(:hobby, interest: 'Lifting')])

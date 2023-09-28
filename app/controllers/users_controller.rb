@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     render json: UserService.new(current_user).find_friends
   end
 
+  def export_csv_file
+    csv_data = CsvFileJob.perform_now(current_user)
+    send_data csv_data, filename: "UserProfile-#{current_user.id}.csv",
+                        type: 'text/csv'
+  end
+
   private
 
   def user_params
