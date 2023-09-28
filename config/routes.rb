@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'pages/home'
   get '/dashboard', to: 'pages#dashboard'
+  get '/friend', to: 'users#friends'
 
   resources :users, only: %i[edit update]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

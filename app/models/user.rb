@@ -1,30 +1,22 @@
-# == Schema Information
-#
-# Table name: users
-#
-#  id                     :bigint           not null, primary key
-#  email                  :string           default(""), not null
-#  encrypted_password     :string           default(""), not null
-#  first_name             :string
-#  last_name              :string
-#  remember_created_at    :datetime
-#  reset_password_sent_at :datetime
-#  reset_password_token   :string
-#  residence              :string
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
-#
-# Indexes
-#
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  has_many :hobbies, dependent: :destroy
+  accepts_nested_attributes_for :hobbies, allow_destroy: true
   has_person_name
-            
+
+  def self.friend_in_area(user, interests)
+    self.joins(:hobbies)
+        .where(residence: user.residence)
+        .where('hobbies.interest IN (?)', interests)
+        .where.not(id: user.id)
+        .distinct
+  end
+
+  def self.friend_anywhere(user, interests)
+    self.joins(:hobbies)
+        .where('hobbies.interest IN (?)', interests)
+        .where.not(id: user.id)
+        .distinct
+  end
 end

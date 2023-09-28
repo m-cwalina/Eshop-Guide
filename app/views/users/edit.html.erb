@@ -1,1 +1,9 @@
-<h1>Update Profile Page</h1>
+<h1>Update your Profile</h1>
+<hr class="my-8">
+<div id="form"
+    data-user-id="<%= @user.id %>"
+    data-last-name="<%= @user.last_name %>"
+    data-residence="<%= @user.residence %>"
+    data-hobbies="<%= @user.hobbies.to_json %>"
+    data-authenticity-token="<%= form_authenticity_token %>">
+</div>
