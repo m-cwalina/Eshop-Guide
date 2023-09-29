@@ -19,15 +19,15 @@ export default function Friends () {
     }
 
   };
-  
+
   return (
-    <div>
+    <div className='friends-container'>
       <form onSubmit={handleFetchData}>
-        <button type="submit" className="btn btn-primary">Friend</button>
+        <button type="submit" className="btn btn-primary"> Find Friend</button>
       </form>
 
       {data && data.map((friend, index) => (
-        <div key={index}>
+        <div key={index} className='content-container'>
           <h3>{friend.first_name} {friend.last_name}</h3>
           <p>Email: {friend.email}</p>
           <p>Residence: {friend.residence}</p>

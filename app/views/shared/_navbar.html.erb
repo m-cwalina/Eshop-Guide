@@ -16,7 +16,7 @@
       <a href="#" class="nav-link">Contact</a>
     </li>
     <% if user_signed_in? %>
-      <li><%= nav_link_to "Edit profile", edit_user_path(current_user), class: "nav-link" %></li>
+      <li><%= nav_link_to "Edit profile", edit_profile_path, class: "nav-link" %></li>
       <li><%= nav_link_to "Dashboard", dashboard_path, class: "nav-link" %></li>
       <%= button_to t(".sign_out"), destroy_user_session_path, method: :delete, class: "text-red-400 hover:text-red-600 font-medium" %>
     <% else %>

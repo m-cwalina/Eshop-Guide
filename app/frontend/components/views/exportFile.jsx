@@ -23,12 +23,12 @@ export default function exportFile() {
   }
 
   return (
-    <div>
+    <div className='exportFile-container'>
       <form onSubmit={handleCSVFile}>
-        <button type="submit" className="btn btn-danger">Export CSV File</button>
+        <button type="submit" className="btn btn-danger custom-button">Export CSV File</button>
       </form>
 
-      {file && <a href={file} download="user_profile.csv" className="btn btn-success">{message}</a>}
+      {file && <button className="btn btn-primary"><a href={file} download="user_profile.csv" >{message}</a></button>}
     </div>
   )
 }

@@ -2,12 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
+    if current_user.update(user_params)
       redirect_to dashboard_path
     else
       render :edit
@@ -21,7 +20,8 @@ class UsersController < ApplicationController
   def export_csv_file
     csv_data = CsvFileJob.perform_now(current_user)
     send_data csv_data, filename: "UserProfile-#{current_user.id}.csv",
-                        type: 'text/csv'
+                        type: 'text/csv',
+                        status: 201
   end
 
   private

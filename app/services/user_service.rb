@@ -12,7 +12,6 @@ class UserService
     end
 
     return nil if friend.empty?
-
     friend
   end
 end

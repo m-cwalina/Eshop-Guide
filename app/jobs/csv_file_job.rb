@@ -7,7 +7,7 @@ class CsvFileJob < ApplicationJob
     csv_string = CSV.generate do |csv|
       csv << ["Name", "Email", "Residence", "Hobbies"]
       hobbies = user.hobbies.pluck(:interest).join(', ')
-      csv << [user.name, user.email, user.residence, hobbies]
+      csv << [user.last_name, user.email, user.residence, hobbies]
     end
 
     csv_string

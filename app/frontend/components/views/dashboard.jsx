@@ -4,9 +4,9 @@ import Friends from './friends';
 
 export default function Dashboard() {
   return (
-    <>
+    <div className='dashboard-container'>
       <Friends />
       <ExportFile />
-    </>
+    </div>
   );
 }
