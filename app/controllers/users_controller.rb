@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
+    @user = current_user
+    if @user.update(user_params)
       redirect_to dashboard_path
     else
       render :edit

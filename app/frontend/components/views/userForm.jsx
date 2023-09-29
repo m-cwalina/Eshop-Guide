@@ -6,10 +6,9 @@ export default function UserForm(props) {
   const [hobbies, setHobbies] = useState(props.hobbies || '');
   const [newHobby, setNewHobby] = useState('');
 
-
-  const handleHobbyChange = (index, value) => {
+  const handleHobbyChange = (value) => {
     const newHobbies = [...hobbies];
-    newHobbies[index] = { ...newHobbies[index], interest: value };
+    newHobbies = { ...newHobbies, interest: value };
     setHobbies(newHobbies);
   };
 
@@ -25,14 +24,16 @@ export default function UserForm(props) {
       <input type="hidden" name="_method" value="patch" />
       <input type="hidden" name="authenticity_token" value={props.authenticityToken} />
 
+      <h2>Information</h2>
       <div className="mb-3">
-        <label className="form-label">Last Name:</label>
+        <label className="form-label text-secondary">Last Name:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control rounded-lg"
           name="user[last_name]"
           value={lastName}
           onChange={e => setLastName(e.target.value)}
+          style={{ textAlign: "center" }}
         />
       </div>
 
@@ -40,10 +41,11 @@ export default function UserForm(props) {
         <label className="form-label">Residence:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control  rounded-lg"
           name="user[residence]"
           value={residence}
           onChange={e => setResidence(e.target.value)}
+          style={{ textAlign: "center" }}
         />
       </div>
 
@@ -54,14 +56,15 @@ export default function UserForm(props) {
           <div className="input-group">
             <input
               type="text"
-              className="form-control"
-              name={`user[hobbies_attributes][${index}][interest]`}
+              className="form-control  rounded-lg"
+              name={`user[hobbies_attributes][interest]`}
               value={hobby.interest}
-              onChange={e => handleHobbyChange(index, e.target.value)}
+              onChange={e => handleHobbyChange(e.target.value)}
+              style={{ textAlign: "center" }}
             />
             <input
               type="hidden"
-              name={`user[hobbies_attributes][${index}][id]`}
+              name={`user[hobbies_attributes][id]`}
               value={hobby.id}
             />
           </div>
@@ -69,22 +72,22 @@ export default function UserForm(props) {
       ))}
 
       <div className="mb-3">
-        <h2>Add New Hobbies</h2>
-        <label className="form-label">Add Hobby:</label>
-        <div className="input-group">
+        <h2>Add New Hobby</h2>
+        <div className="input-group add-button">
           <input
             type="text"
-            className="form-control"
+            className="form-control  rounded-lg"
             value={newHobby}
             onChange={e => setNewHobby(e.target.value)}
+            style={{ textAlign: "center" }}
           />
-          <button type="button" className="btn btn-secondary" onClick={addNewHobby}>
+          <button type="button" className="btn btn-secondary btn-sm" onClick={addNewHobby}>
             Add Interest
           </button>
         </div>
       </div>
 
-      <button type="submit" className="btn btn-primary">Update</button>
+      <button type="submit" className="btn btn-primary btn-lg">Update</button>
     </form>
   );
 }

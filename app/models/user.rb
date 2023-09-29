@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :hobbies, dependent: :destroy
   accepts_nested_attributes_for :hobbies, allow_destroy: true
-  validates :residence, :last_name, presence: true
+  validates :last_name, presence: true
 
   def self.friend_in_area(user, interests)
     self.joins(:hobbies)

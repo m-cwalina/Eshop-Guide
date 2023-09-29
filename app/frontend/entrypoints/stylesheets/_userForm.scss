@@ -6,3 +6,13 @@
   align-items: center;
   padding: 50px
 }
+
+.input-group.add-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input-group.add-button .btn {
+  margin-left: 10px;
+}
