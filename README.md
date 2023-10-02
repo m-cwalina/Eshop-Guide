@@ -16,7 +16,7 @@
 
 * Sign Up through Devise
   
-<img width="1348" alt="Screen Shot 2023-09-29 at 11 27 42 PM" src="https://github.com/m-cwalina/Eshop-Guide/assets/85550149/2a6b19a8-c020-4ae8-9b86-8e0d7f02cb32">
+  <img width="622" alt="Screen Shot 2023-09-29 at 11 25 43 PM" src="https://github.com/m-cwalina/Eshop-Guide/assets/85550149/e88ebfb5-cce0-49ac-86e5-307d3debbb58">
 
 * Dashboard with a Welcome for the current_user
   
