@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     render json: UserService.new(current_user).find_friends
   end
 
+  # I am sending the data on the fly. Real world scenario would be to store file on redis when file is large enough.
   def export_csv_file
     csv_data = CsvFileJob.perform_now(current_user)
     send_data csv_data, filename: "UserProfile-#{current_user.id}.csv",
